@@ -1,0 +1,48 @@
+---
+packages:
+  # Browsers
+  - brave-bin
+  - firefox
+  - librewolf-bin
+
+  # Development Tools
+  - git
+  - github-cli
+  - base-devel
+  - just
+  - direnv
+  - go
+  - python
+  - ansible
+  - chezmoi
+
+  # Terminal Utilities
+  - btop
+  - ripgrep
+  - micro
+  - fastfetch
+  - duf
+  - htop
+  - tree
+  - rclone
+  - restic
+
+  # Desktop Applications
+  - obsidian
+  - inkscape
+  - kdenlive
+  - kate
+  - ark
+  - localsend
+
+  # Gaming
+  - steam
+  - protonup-qt
+
+  # Multimedia
+  - haruna
+  - yt-dlp
+
+  # Security and System
+  - sops
+  - tpm2-tools

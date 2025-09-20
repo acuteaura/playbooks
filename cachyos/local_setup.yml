@@ -1,0 +1,22 @@
+---
+- name: CachyOS Setup
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  become: false
+
+  vars_files:
+    - vars/packages.yml
+
+  tasks:
+    - name: Display playbook info
+      ansible.builtin.debug:
+        msg: "Running CachyOS setup playbook to enable ZEN v4 repositories, install packages, and configure Brave policies"
+
+    - name: Install required packages
+      include_tasks: tasks/packages.yml
+      tags: [packages]
+
+    - name: Configure Brave policies
+      include_tasks: tasks/brave_policy.yml
+      tags: [brave, policies]

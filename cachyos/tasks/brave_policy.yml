@@ -1,0 +1,20 @@
+---
+- name: Install Brave policy file
+  block:
+    - name: Ensure Brave-specific policies directory exists
+      ansible.builtin.file:
+        path: /etc/brave/policies/managed
+        state: directory
+        mode: "0755"
+        owner: root
+        group: root
+      become: true
+    - name: Copy Brave policy file to Brave-specific policies directory
+      ansible.builtin.copy:
+        src: anti-eich-action.json
+        dest: /etc/brave/policies/managed/anti-eich-action.json
+        owner: root
+        group: root
+        mode: "0644"
+        force: yes
+      become: true

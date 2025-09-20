@@ -1,0 +1,25 @@
+---
+- name: Install packages from list
+  block:
+    - name: Install required packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop: "{{ packages }}"
+      register: package_install_result
+      failed_when:
+        - package_install_result.failed is defined
+        - package_install_result.failed
+        - "'was not found' not in package_install_result.msg"
+
+    - name: Report any packages that were not found
+      ansible.builtin.debug:
+        msg: "Package {{ item.item }} was not found and has been skipped"
+      loop: "{{ package_install_result.results }}"
+      when:
+        - item.failed is defined
+        - item.failed
+        - "'was not found' in item.msg"
+      loop_control:
+        label: "{{ item.item }}"
