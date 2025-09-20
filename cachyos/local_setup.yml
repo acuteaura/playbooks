@@ -9,10 +9,6 @@
     - vars/packages.yml
 
   tasks:
-    - name: Display playbook info
-      ansible.builtin.debug:
-        msg: "Running CachyOS setup playbook to enable ZEN v4 repositories, install packages, and configure Brave policies"
-
     - name: Install required packages
       include_tasks: tasks/packages.yml
       tags: [packages]
